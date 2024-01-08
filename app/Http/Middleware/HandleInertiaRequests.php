@@ -34,6 +34,9 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
+            'cart' => [
+                'items' => fn () => session('cart-items')
+            ]
         ];
     }
 }

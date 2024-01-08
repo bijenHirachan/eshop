@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Inertia\Inertia;
 use Inertia\Response;
+use Stripe\StripeClient;
 
 class RegisteredUserController extends Controller
 {
@@ -37,10 +38,18 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $stripeClient = new StripeClient(config('services.stripe.secret'));
+
+        $customer = $stripeClient->customers->create([
+            'name' => $request->name,
+            'email' => $request->email
+        ]);
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'customer_id' => $customer->id
         ]);
 
         event(new Registered($user));
