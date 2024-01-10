@@ -1,7 +1,7 @@
 import React from "react";
 import { AiOutlineMinusSquare, AiOutlinePlusSquare } from "react-icons/ai";
 import noimage from "../../images/noimage.jpg";
-import { router } from "@inertiajs/react";
+import { Link, router } from "@inertiajs/react";
 
 const CartItem = ({ item }) => {
     const handleIncrease = () => {
@@ -42,7 +42,7 @@ const CartItem = ({ item }) => {
 
     return (
         <div className="grid grid-cols-12 items-center relative bg-white rounded-lg p-4 mb-2">
-            <div className="col-span-2">
+            <Link href={`/products/${item?.slug}`} className="col-span-2">
                 {item?.image_url ? (
                     <img
                         className="h-32 w-32 object-contain object-center"
@@ -55,7 +55,7 @@ const CartItem = ({ item }) => {
                         src={noimage}
                     />
                 )}
-            </div>
+            </Link>
 
             <div className="col-span-6 px-4">
                 <h2 className="text-gray-500 font-semibold">{item.title}</h2>
@@ -85,7 +85,7 @@ const CartItem = ({ item }) => {
                     Remove
                 </button>
                 <div className="text-lg text-gray-500 absolute top-2 right-2 font-bold">
-                    $ {((item.price / 100) * item.quantity).toFixed(2)}
+                    € {((item.price / 100) * item.quantity).toFixed(2)}
                 </div>
             </div>
         </div>

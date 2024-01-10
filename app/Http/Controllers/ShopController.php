@@ -65,6 +65,7 @@ class ShopController extends Controller
                         "id" => $product->id,
                         "title" => $product->title,
                         "quantity" => 1,
+                        "slug" => $product->slug,
                         "image_url" => $product->image_url,
                         "price" => $product->price,
                         "excerpt" => $product->excerpt

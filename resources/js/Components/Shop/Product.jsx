@@ -51,7 +51,7 @@ const Product = ({ product, shoppingCart }) => {
             </h2>
 
             <div className="absolute bottom-2 text-gray-500 text-md">
-                $ {(product.price / 100).toFixed(2)}
+                € {(product.price / 100).toFixed(2)}
             </div>
 
             {checkInCart() ? (

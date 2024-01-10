@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,7 +14,8 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('customer_id')->constrained('users', 'orders_customer_id')->cascadeOnDelete();
+            $table->string('customer_id');
+            $table->foreign('customer_id')->references('customer_id')->on('users')->cascadeOnDelete();
             $table->string('payment_intent_id')->nullable()->unique();
             $table->boolean('paid')->default(0);
             $table->timestamps();

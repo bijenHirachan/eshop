@@ -57,7 +57,7 @@ const ProductDetails = ({ auth, product, similarProducts, cart }) => {
 
                     <div className="flex items-center justify-between mt-16">
                         <p className=" text-gray-500 text-xl">
-                            ${(product.price / 100).toFixed(2)}
+                            € {(product.price / 100).toFixed(2)}
                         </p>
 
                         {checkInCart() ? (

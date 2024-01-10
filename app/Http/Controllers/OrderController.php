@@ -5,15 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
+use Inertia\Inertia;
 
 class OrderController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Order::class);
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return Inertia::render("Orders/OrdersIndex", [
+            "orders" => Order::with('user')->paginate(8)
+        ]);
     }
 
     /**

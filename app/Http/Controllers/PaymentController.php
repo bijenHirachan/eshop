@@ -9,22 +9,13 @@ class PaymentController extends Controller
 {
     public function __invoke(Request $request)
     {
-        if($request->type === "payment_intent.created"){
+        if($request->type === "checkout.session.completed"){
             Order::create([
-                "customer_id" => $request->data['object']['customer'],
-                "payment_intent_id" => $request->data['object']['id'],
+                'customer_id' => $request->data['object']['customer'],
+                'payment_intent_id' => $request->data['object']['payment_intent'],
+                'paid' =>  $request->data['object']['payment_status'] === "paid" ? 1 : 0
             ]);
         }
 
-        if($request->type === "charge.succeeded" ){
-            $order = Order::where('payment_intent_id', $request->data['object']['payment_intent'])->first();
-            
-            if($order){
-                $order->update([
-                    "paid" => $request->data['object']['paid'],
-                ]);
-            }
-      
-        }
     }
 }

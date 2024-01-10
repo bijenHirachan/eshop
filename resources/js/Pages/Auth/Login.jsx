@@ -102,15 +102,20 @@ export default function Login({ status, canResetPassword }) {
                 </div>
 
                 <div className="flex items-center justify-between mt-4">
-                    {canResetPassword && (
+                    {/* {canResetPassword && (
                         <Link
                             href={route("password.request")}
                             className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
                             Forgot your password?
                         </Link>
-                    )}
-
+                    )} */}
+                    <Link
+                        href={route("register")}
+                        className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    >
+                        Not registered yet?
+                    </Link>
                     <button
                         className="bg-purple-600 hover:bg-purple-900 transition-all delay-75 px-4 py-2 rounded-lg text-purple-50"
                         disabled={processing}

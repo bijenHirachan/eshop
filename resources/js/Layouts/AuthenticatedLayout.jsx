@@ -4,6 +4,7 @@ import Dropdown from "@/Components/Dropdown";
 import NavLink from "@/Components/NavLink";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link } from "@inertiajs/react";
+import logo from "../images/shopper.png";
 
 // export default function Authenticated({ user, header, children }) {
 //     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
@@ -125,52 +126,72 @@ import { Link } from "@inertiajs/react";
 // }
 
 import React from "react";
+import { RiDashboardLine } from "react-icons/ri";
+import { MdOutlineShoppingBag } from "react-icons/md";
+import { TbCategoryPlus } from "react-icons/tb";
+import { LuUser, LuUsers } from "react-icons/lu";
+import { IoCashOutline } from "react-icons/io5";
+import { CiLogin, CiShoppingBasket } from "react-icons/ci";
 
 const AuthenticatedLayout = ({ user, children }) => {
     return (
         <div className="h-screen flex">
-            <nav className="bg-indigo-100 shadow-lg h-full w-64 p-8 flex flex-col justify-between">
+            <nav className="bg-purple-400 shadow-lg h-full w-56 p-8 flex flex-col justify-between">
                 <div>
-                    <Link href="/dashboard">Logo</Link>
+                    <Link href="/dashboard">
+                        <img src={logo} className="h-24 w-auto" />
+                    </Link>
                 </div>
 
                 <div className="flex flex-col">
                     <NavLink
-                        className="w-fit"
                         href={route("dashboard")}
                         active={route().current("dashboard")}
                     >
-                        Dashboard
+                        <RiDashboardLine size={18} /> Dashboard
                     </NavLink>
                     <NavLink
-                        className="w-fit"
                         href={route("products.index")}
                         active={route().current("products.*")}
                     >
-                        Products
+                        <MdOutlineShoppingBag size={18} /> Products
                     </NavLink>
                     <NavLink
-                        className="w-fit"
                         href={route("categories.index")}
                         active={route().current("categories.*")}
                     >
+                        <TbCategoryPlus size={18} />
                         Categories
                     </NavLink>
-                    <NavLink className="w-fit" href="/">
+                    <NavLink
+                        href={route("users.index")}
+                        active={route().current("users.*")}
+                    >
+                        <LuUsers size={18} />
+                        Users
+                    </NavLink>
+                    <NavLink
+                        href={route("orders.index")}
+                        active={route().current("orders.*")}
+                    >
+                        <IoCashOutline size={18} />
+                        Orders
+                    </NavLink>
+                    <NavLink href="/">
+                        <CiShoppingBasket size={18} />
                         Shop
                     </NavLink>
                 </div>
-
                 {user && (
                     <div>
-                        <h3>{user?.name}</h3>
-                        <Link
-                            href="/logout"
-                            method="POST"
-                            className="text-sm transition-all delay-75 font-semibold text-gray-600 hover:text-gray-700"
-                        >
+                        <NavLink href={`/admin/users/${user?.id}`}>
+                            <LuUser size={18} />
+                            {user?.name}
+                        </NavLink>
+                        <NavLink href="/logout" method="POST">
+                            <CiLogin size={18} />
                             Logout
-                        </Link>
+                        </NavLink>
                     </div>
                 )}
             </nav>

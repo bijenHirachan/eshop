@@ -54,7 +54,7 @@ const Cart = ({ auth, cart }) => {
                             </span>
                             {"  "}
                             <span className="text-lg font-bold">
-                                $ {(totalPrice() / 100).toFixed(2)}
+                                € {(totalPrice() / 100).toFixed(2)}
                             </span>
                         </p>
                         <Link

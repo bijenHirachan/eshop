@@ -22,7 +22,7 @@ const FeaturedProducts = ({ featuredProducts }) => {
                             <p className="">Get your products now.</p>
                         </h2>
                         <span className="absolute bottom-2 right-2 z-20 bg-red-500 text-red-50 px-2 py-1 rounded">
-                            $ {(featuredProducts[0]?.price / 100).toFixed(2)}
+                            € {(featuredProducts[0]?.price / 100).toFixed(2)}
                         </span>
                     </div>
                 </Link>

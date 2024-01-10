@@ -92,7 +92,7 @@ const CategoriesIndex = ({ auth, categories, searchString, errors }) => {
                 </div>
             </Modal>
 
-            <div className="py-12 h-full">
+            <div className="py-12 bg-purple-100 h-full">
                 <div className="p-6 text-gray-900">
                     <div className="py-3 flex justify-between">
                         <form className="flex" onSubmit={handleSearch}>

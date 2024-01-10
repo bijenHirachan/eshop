@@ -1,9 +1,15 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\UserController;
+use App\Models\Category;
+use App\Models\Order;
+use App\Models\Product;
+use App\Models\User;
 use GuzzleHttp\Handler\Proxy;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
@@ -35,12 +41,19 @@ Route::delete('/cart/{id}/remove', [ShopController::class, 'removeFromCart']);
 
 Route::get('/dashboard', function () {
     if(!auth()->user()->is_admin) return redirect("/");
-    return Inertia::render('Dashboard');
+    return Inertia::render('Dashboard',[
+        'products' => Product::count(),
+        'categories' => Category::count(),
+        'users' => User::count(),
+        'orders' => Order::count(),
+    ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::resource('products', ProductController::class);
     Route::resource('categories', CategoryController::class);
+    Route::resource('users', UserController::class);
+    Route::resource('orders', OrderController::class);
     Route::post('categories/{product}/product', [CategoryController::class, 'addCategories']);
     Route::delete('categories/{product}/product/{category}', [CategoryController::class, 'removeCategory']);
     Route::post('/products/{product}/featured', [ProductController::class, 'updateFeaturedProduct']);
