@@ -17,7 +17,7 @@ const FeaturedProducts = ({ featuredProducts }) => {
                         />
                     </div>
                     <div className="col-span-12 sm:col-span-6 flex justify-center items-center ">
-                        <h2 className="text-gray-500 text-2xl font-semibold flex flex-col items-center justify-center">
+                        <h2 className="text-gray-500 text-2xl font-semibold flex flex-col items-center justify-center mb-4">
                             <p className="text-purple-500">Hurry Up!</p>
                             <p className="">Get your products now.</p>
                         </h2>
@@ -29,7 +29,7 @@ const FeaturedProducts = ({ featuredProducts }) => {
 
                 <Link
                     href={`/products/${featuredProducts[1]?.slug}`}
-                    className="relative col-span-6 h-72 rounded-lg p-8 flex justify-center items-center bg-white"
+                    className="relative col-span-12 sm:col-span-6 h-72 rounded-lg p-8 flex justify-center items-center bg-white"
                 >
                     <img
                         className="h-full w-auto object-contain object-center"
@@ -43,7 +43,7 @@ const FeaturedProducts = ({ featuredProducts }) => {
 
                 <Link
                     href={`/products/${featuredProducts[2]?.slug}`}
-                    className="relative col-span-6 h-72 rounded-lg p-8 flex justify-center items-center bg-white"
+                    className="relative col-span-12 sm:col-span-6 h-72 rounded-lg p-8 flex justify-center items-center bg-white"
                 >
                     <img
                         className="h-full w-auto object-contain object-center"

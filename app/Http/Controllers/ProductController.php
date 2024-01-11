@@ -58,7 +58,7 @@ class ProductController extends Controller
             $path = $request->image_url->storeAs('product_images', $fileName . time() .".". $request->image_url->getClientOriginalExtension(), 'public');
         }
 
-        Product::create([
+        $product = Product::create([
             'title' => $request->title,
             'slug' => str()->slug($request->title),
             'excerpt' => $request->excerpt,
@@ -68,7 +68,7 @@ class ProductController extends Controller
             'image_url' => $path ?? NULL
         ]);
 
-        return to_route('products.index');
+        return to_route('products.show', $product->slug);
     }
 
     /**

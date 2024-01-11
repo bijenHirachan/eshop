@@ -11,7 +11,7 @@ const ShopIndex = ({ auth, featuredProducts, cart }) => {
 
             <FeaturedProducts featuredProducts={featuredProducts} />
 
-            <div className="mt-16">
+            <div className="my-16">
                 <Link
                     href="/products"
                     className="flex rounded-lg w-fit items-center border-2 border-purple-500 hover:border-purple-600 hover:text-purple-700 px-4 py-2 text-purple-600 text-lg"

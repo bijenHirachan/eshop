@@ -31,11 +31,11 @@ const Cart = ({ auth, cart }) => {
                 <div className="grid grid-cols-12 gap-4 my-8">
                     <div className="col-span-12 lg:col-span-8 rounded-lg">
                         <div className=" mb-2 flex justify-between">
-                            <h4 className="text-gray-600 font-semibold">
+                            <h4 className="text-purple-600 font-semibold">
                                 Items in your cart
                             </h4>
                             <button
-                                className="text-gray-500 text-sm underline hover:text-gray-600 transition-all delay-75"
+                                className="text-purple-500 text-sm underline hover:text-gray-600 transition-all delay-75"
                                 onClick={removeAllItems}
                             >
                                 Remove all items

@@ -33,7 +33,7 @@ const ProductDetails = ({ auth, product, similarProducts, cart }) => {
         <ShopLayout user={auth.user} cart={cart}>
             <Head title={product.title} />
             <div className="w-full grid grid-cols-12 my-16 rounded-lg bg-white">
-                <div className="col-span-6 h-96 p-8 flex items-center justify-center">
+                <div className="col-span-12 md:col-span-6 h-96 p-8 flex items-center justify-center">
                     {product.image_url ? (
                         <img
                             className="w-auto h-40 object-contain object-center"
@@ -47,7 +47,7 @@ const ProductDetails = ({ auth, product, similarProducts, cart }) => {
                         />
                     )}
                 </div>
-                <div className="col-span-6 p-8">
+                <div className="col-span-12 md:col-span-6 p-8">
                     <h3 className="text-gray-500 text-lg font-semibold mb-2">
                         {product.title}
                     </h3>
@@ -92,8 +92,8 @@ const ProductDetails = ({ auth, product, similarProducts, cart }) => {
             </div>
 
             {similarProducts.length > 0 && (
-                <div>
-                    <h2 className="text-gray-500 text-lg font-semibold mb-2">
+                <div className="mb-8">
+                    <h2 className="text-purple-600 text-lg font-semibold mb-2">
                         Similar Products
                     </h2>
                     <div className="w-full grid grid-cols-12 gap-4">
